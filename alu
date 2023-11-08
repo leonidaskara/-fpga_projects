@@ -27,5 +27,8 @@ NOTdb <= NOT (db);
 MUX_1: mux2in1 port map(ZERO, ac, alus(1), f1);
 MUX_2: mux4in1 port map(ZERO, db, NOTDB, ZERO, alus(2)&ALUS(3), f2);
 MUX_3: mux4in1 port map(ANDout, ORout, XORout, NOTout, alus(5)&alus(6),f4);
-PADDR
+PADDR: adder8bit port map(f1,f2,alus(4), f3);
+MUX_4: mux2in1 port map(f3,f4, alus(7),dout);
+
 end arch;
+zero <= (others=>'0');
